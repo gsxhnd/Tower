@@ -6,11 +6,12 @@ import (
 	mqtt "github.com/eclipse/paho.mqtt.golang"
 )
 
-type MqttClient struct {
+type MqttClient interface{}
+type mqttClient struct {
 	mqttClient mqtt.Client
 }
 
-func NewMqttClient() *MqttClient {
+func NewMqttClient() MqttClient {
 	var broker = "broker.emqx.io"
 	var port = 1883
 	opts := mqtt.NewClientOptions()
@@ -21,7 +22,7 @@ func NewMqttClient() *MqttClient {
 	// opts.SetDefaultPublishHandler(messagePubHandler)
 	// opts.OnConnect = connectHandler
 	// opts.OnConnectionLost = connectLostHandler
-	return &MqttClient{
+	return &mqttClient{
 		mqttClient: mqtt.NewClient(opts),
 	}
 }

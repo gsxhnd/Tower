@@ -6,10 +6,11 @@ package wire
 
 import (
 	"github.com/google/wire"
+	"github.com/gsxhnd/tower/src/mqtt"
 	"github.com/gsxhnd/tower/src/utils"
 )
 
-func InitApp() *application {
-	wire.Build(NewApplication, utils.NewConfig)
-	return &application{}
+func InitApp(filePath *string) (*application, error) {
+	wire.Build(NewApplication, utils.NewUtils, utils.UtilsSet, mqtt.NewMqttClient)
+	return &application{}, nil
 }

@@ -7,13 +7,27 @@
 package wire
 
 import (
+	"github.com/gsxhnd/tower/src/mqtt"
 	"github.com/gsxhnd/tower/src/utils"
 )
 
 // Injectors from wire.go:
 
-func InitApp() *application {
-	config := utils.NewConfig()
-	wireApplication := NewApplication(config)
-	return wireApplication
+func InitApp(filePath *string) (*application, error) {
+	logger := utils.NewLogger()
+	tracerProvider, err := utils.NewTracer()
+	if err != nil {
+		return nil, err
+	}
+	config, err := utils.NewConfig(filePath)
+	if err != nil {
+		return nil, err
+	}
+	utilsUtils, err := utils.NewUtils(logger, tracerProvider, config)
+	if err != nil {
+		return nil, err
+	}
+	mqttClient := mqtt.NewMqttClient()
+	wireApplication := NewApplication(utilsUtils, mqttClient)
+	return wireApplication, nil
 }

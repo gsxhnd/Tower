@@ -1,9 +1,19 @@
 package main
 
-import "github.com/gsxhnd/tower/src/wire"
+import (
+	"flag"
+
+	"github.com/gsxhnd/tower/src/wire"
+)
 
 func main() {
-	app := wire.InitApp()
+	filePath := flag.String("config", "config.yaml", "config file path")
+	flag.Parse()
+
+	app, err := wire.InitApp(filePath)
+	if err != nil {
+		panic(err)
+	}
 	if err := app.Run(); err != nil {
 		panic(err)
 	}
