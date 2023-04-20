@@ -12,13 +12,9 @@ type application struct {
 	utils  *utils.Utils
 }
 
-func NewApplication(u *utils.Utils, mqtt mqtt.MqttClient) *application {
-	e := gin.New()
-	e.Routes()
-	e.Use()
-
+func NewApplication(g *gin.Engine, u *utils.Utils, mqtt mqtt.MqttClient) *application {
 	return &application{
-		engine: gin.Default(),
+		engine: g,
 		utils:  u,
 	}
 }

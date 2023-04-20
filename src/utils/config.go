@@ -1,6 +1,8 @@
 package utils
 
 import (
+	"io/ioutil"
+
 	"gopkg.in/yaml.v3"
 )
 
@@ -9,10 +11,18 @@ type Config struct {
 	Debug bool
 }
 
-type EnvConfig struct{}
+// type EnvConfig struct{}
 
 func NewConfig(filePath *string) (*Config, error) {
 	var c Config
-	err := yaml.Unmarshal([]byte{}, &c)
-	return &c, err
+	data, err := ioutil.ReadFile(*filePath)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := yaml.Unmarshal(data, &c); err != nil {
+		return &c, err
+	} else {
+		return &c, err
+	}
 }

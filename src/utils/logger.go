@@ -29,11 +29,11 @@ var (
 			enc.AppendInt64(int64(d) / 1000000)
 		},
 	})
-	prodEncoder = zapcore.NewConsoleEncoder(zapcore.EncoderConfig{
+	prodEncoder = zapcore.NewJSONEncoder(zapcore.EncoderConfig{
 		MessageKey:  "msg",
 		LevelKey:    "level",
 		TimeKey:     "ts",
-		EncodeLevel: zapcore.CapitalColorLevelEncoder,
+		EncodeLevel: zapcore.CapitalLevelEncoder,
 		EncodeTime: func(t time.Time, enc zapcore.PrimitiveArrayEncoder) {
 			enc.AppendString(t.UTC().Format("2006-01-02T15:04:05.000000-07:00"))
 		},
