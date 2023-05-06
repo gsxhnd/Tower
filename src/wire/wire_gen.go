@@ -8,14 +8,16 @@ package wire
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/gsxhnd/tower/src/mqtt"
-	"github.com/gsxhnd/tower/src/utils"
+	"github.com/gsxhnd/go-api-template/src/mqtt"
+	"github.com/gsxhnd/go-api-template/src/routes"
+	"github.com/gsxhnd/go-api-template/src/utils"
 )
 
 // Injectors from wire.go:
 
 func InitApp(filePath *string) (*application, error) {
 	engine := gin.New()
+	routesRoutes := routes.NewRoutes(engine)
 	logger := utils.NewLogger()
 	tracerProvider, err := utils.NewTracer()
 	if err != nil {
@@ -30,6 +32,6 @@ func InitApp(filePath *string) (*application, error) {
 		return nil, err
 	}
 	mqttClient := mqtt.NewMqttClient()
-	wireApplication := NewApplication(engine, utilsUtils, mqttClient)
+	wireApplication := NewApplication(engine, routesRoutes, utilsUtils, mqttClient)
 	return wireApplication, nil
 }

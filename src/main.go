@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 
-	"github.com/gsxhnd/tower/src/wire"
+	"github.com/gsxhnd/go-api-template/src/wire"
 )
 
 func main() {
