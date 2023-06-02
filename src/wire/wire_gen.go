@@ -8,7 +8,7 @@ package wire
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/gsxhnd/go-api-template/src/mqtt"
+	"github.com/gsxhnd/go-api-template/src/handler"
 	"github.com/gsxhnd/go-api-template/src/routes"
 	"github.com/gsxhnd/go-api-template/src/utils"
 )
@@ -17,21 +17,19 @@ import (
 
 func InitApp(filePath *string) (*application, error) {
 	engine := gin.New()
-	routesRoutes := routes.NewRoutes(engine)
-	logger := utils.NewLogger()
-	tracerProvider, err := utils.NewTracer()
-	if err != nil {
-		return nil, err
+	testHandler := handler.NewTestHandle()
+	routesRoutes := &routes.Routes{
+		TestHandle: testHandler,
 	}
+	logger := utils.NewLogger()
 	config, err := utils.NewConfig(filePath)
 	if err != nil {
 		return nil, err
 	}
-	utilsUtils, err := utils.NewUtils(logger, tracerProvider, config)
-	if err != nil {
-		return nil, err
+	utilsUtils := &utils.Utils{
+		Logger: logger,
+		Config: config,
 	}
-	mqttClient := mqtt.NewMqttClient()
-	wireApplication := NewApplication(engine, routesRoutes, utilsUtils, mqttClient)
+	wireApplication := NewApplication(engine, routesRoutes, utilsUtils)
 	return wireApplication, nil
 }

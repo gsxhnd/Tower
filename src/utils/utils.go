@@ -11,14 +11,14 @@ type Utils struct {
 	Config *Config
 }
 
-func NewUtils(l Logger, t *sdktrace.TracerProvider, cfg *Config) (*Utils, error) {
-	return &Utils{
-		Logger: l,
-		Tracer: t,
-		Config: cfg,
-	}, nil
-}
+// func NewUtils(l Logger, t *sdktrace.TracerProvider, cfg *Config) (*Utils, error) {
+// 	return &Utils{
+// 		Logger: l,
+// 		Tracer: t,
+// 		Config: cfg,
+// 	}, nil
+// }
 
 var UtilsSet = wire.NewSet(
-	NewLogger, NewTracer, NewConfig,
+	NewLogger, NewTracer, NewConfig, wire.Struct(new(Utils), "Logger", "Config"),
 )
