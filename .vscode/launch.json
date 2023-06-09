@@ -11,8 +11,9 @@
       "mode": "auto",
       "showLog": true,
       "program": "${workspaceRoot}/src",
+      "envFile": "${workspaceRoot}/.env",
       "args": ["version"],
-      "output": "${workspaceRoot}/build/tower",
+      "output": "${workspaceRoot}/build/main",
       "trace": "verbose",
       "cwd": "${workspaceRoot}"
     }
