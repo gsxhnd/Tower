@@ -3,8 +3,8 @@ package routes
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/wire"
-	"github.com/gsxhnd/tower/src/handler"
-	"github.com/gsxhnd/tower/src/middleware"
+	"github.com/gsxhnd/go-api-template/src/handler"
+	"github.com/gsxhnd/go-api-template/src/middleware"
 )
 
 type Routes struct {

@@ -1,10 +1,10 @@
 package middleware
 
-import "github.com/gsxhnd/tower/src/utils"
+import "github.com/gsxhnd/go-api-template/src/utils"
 
 type Middlewarer interface {
 }
-type middleware struct{
+type middleware struct {
 	logger utils.Logger
 }
 

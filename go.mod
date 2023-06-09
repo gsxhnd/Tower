@@ -1,4 +1,4 @@
-module github.com/gsxhnd/tower
+module github.com/gsxhnd/go-api-template
 
 go 1.20
 

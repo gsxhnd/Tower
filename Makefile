@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 BASEDIR = $(shell pwd)
-APP = tower
+APP = main
 BuildDIR = build
 
 # gitTag = $(shell if [ "`git describe --tags --abbrev=0 2>/dev/null`" != "" ];then git describe --tags --abbrev=0 | sed 's/v//g'; else git log --pretty=format:'%h' -n 1; fi)

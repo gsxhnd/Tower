@@ -2,7 +2,7 @@ package handler
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/gsxhnd/tower/src/utils"
+	"github.com/gsxhnd/go-api-template/src/utils"
 )
 
 type RootHandler interface {
