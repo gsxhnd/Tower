@@ -2,9 +2,9 @@
 
 ```shell
 go install github.com/google/wire/cmd/wire@latest
-go mod download
+go mod tidy
 ```
 
 ```shell
-wire ./src/wire
+make di
 ```

@@ -1,29 +1,19 @@
 package utils
 
-import (
-	"io/ioutil"
-
-	"gopkg.in/yaml.v3"
-)
+import "github.com/caarlos0/env/v8"
 
 type Config struct {
-	Dev      bool
-	Debug    bool
-	LogLevel string
+	Dev      bool   `env:"DEV"`
+	Debug    bool   `env:"DEBUG"`
+	LogLevel string `env:"LOG_LEVEL"`
 }
 
 // type EnvConfig struct{}
 
 func NewConfig(filePath *string) (*Config, error) {
-	var c Config
-	data, err := ioutil.ReadFile(*filePath)
-	if err != nil {
+	cfg := Config{}
+	if err := env.Parse(&cfg); err != nil {
 		return nil, err
 	}
-
-	if err := yaml.Unmarshal(data, &c); err != nil {
-		return &c, err
-	} else {
-		return &c, err
-	}
+	return &cfg, nil
 }
