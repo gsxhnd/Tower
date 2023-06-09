@@ -13,6 +13,6 @@ import (
 )
 
 func InitApp(filePath *string) (*application, error) {
-	wire.Build(NewApplication, utils.NewUtils, utils.UtilsSet, mqtt.NewMqttClient, gin.New, routes.NewRoutes)
+	wire.Build(NewApplication, utils.UtilsSet, mqtt.NewMqttClient, gin.New, routes.RouteSet)
 	return &application{}, nil
 }

@@ -3,19 +3,18 @@ package wire
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/gsxhnd/tower/src/mqtt"
-	"github.com/gsxhnd/tower/src/utils"
+	"github.com/gsxhnd/tower/src/routes"
 )
 
 type application struct {
 	engine *gin.Engine
 	mqtt   mqtt.MqttClient
-	utils  *utils.Utils
 }
 
-func NewApplication(g *gin.Engine, u *utils.Utils, mqtt mqtt.MqttClient) *application {
+func NewApplication(g *gin.Engine, mqtt mqtt.MqttClient, r *routes.Routes) *application {
+	r.Init(g)
 	return &application{
 		engine: g,
-		utils:  u,
 	}
 }
 

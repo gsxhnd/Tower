@@ -8,7 +8,10 @@ package wire
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/gsxhnd/tower/src/handler"
+	"github.com/gsxhnd/tower/src/middleware"
 	"github.com/gsxhnd/tower/src/mqtt"
+	"github.com/gsxhnd/tower/src/routes"
 	"github.com/gsxhnd/tower/src/utils"
 )
 
@@ -16,20 +19,18 @@ import (
 
 func InitApp(filePath *string) (*application, error) {
 	engine := gin.New()
-	logger := utils.NewLogger()
-	tracerProvider, err := utils.NewTracer()
-	if err != nil {
-		return nil, err
-	}
+	mqttClient := mqtt.NewMqttClient()
 	config, err := utils.NewConfig(filePath)
 	if err != nil {
 		return nil, err
 	}
-	utilsUtils, err := utils.NewUtils(logger, tracerProvider, config)
-	if err != nil {
-		return nil, err
+	logger := utils.NewLogger(config)
+	middlewarer := middleware.NewMiddleware(logger)
+	rootHandler := handler.NewRootHandle(logger)
+	routesRoutes := &routes.Routes{
+		Middleware: middlewarer,
+		RootHandle: rootHandler,
 	}
-	mqttClient := mqtt.NewMqttClient()
-	wireApplication := NewApplication(engine, utilsUtils, mqttClient)
+	wireApplication := NewApplication(engine, mqttClient, routesRoutes)
 	return wireApplication, nil
 }

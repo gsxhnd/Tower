@@ -28,12 +28,8 @@ release_linux:
 # 	CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -v -trimpath -ldflags ${ldflags} -o ${BuildDIR}/${APP}-windows-amd64.exe .
 # 	CGO_ENABLED=0 GOOS=windows GOARCH=arm go build -v -trimpath -ldflags ${ldflags} -o ${BuildDIR}/${APP}-windows-arm.exe .
 
-dev:
-	docker build -f Dockerfile -t mosquitto:dev .
-	docker run -d --name mosquitto -p 1883:1883 -p 9001:9001 mosquitto:dev
-
-dev-stop:
-	docker stop mosquitto:dev
+di: 
+	wire ./src/wire
 
 clean:
 	@go clean --cache

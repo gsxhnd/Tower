@@ -7,8 +7,9 @@ import (
 )
 
 type Config struct {
-	Dev   bool
-	Debug bool
+	Dev      bool
+	Debug    bool
+	LogLevel string
 }
 
 // type EnvConfig struct{}
