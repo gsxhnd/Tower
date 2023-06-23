@@ -7,3 +7,4 @@ import (
 var UtilsSet = wire.NewSet(
 	NewLogger, NewTracer, NewConfig,
 )
+var version = ""
