@@ -5,7 +5,15 @@
 		"vscode": {
 			"extensions": [
 				"mhutchie.git-graph"
-			]
+			],
+			"settings": { 
+				"terminal.integrated.defaultProfile.linux": "zsh", 
+				"terminal.integrated.profiles.linux": {
+					"zsh": {
+						"path": "/bin/zsh"
+					}
+				}
+			}
 		}
 	},
 	"features": {
