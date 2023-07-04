@@ -1,0 +1,14 @@
+{
+	"image": "mcr.microsoft.com/devcontainers/go",
+	"build": {},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"mhutchie.git-graph"
+			]
+		}
+	},
+    "mounts": [
+        "source=${localEnv:HOME}/.ssh,target=/vscode/.ssh,type=bind,consistency=cached"
+    ]
+}
