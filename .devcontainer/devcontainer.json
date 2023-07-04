@@ -7,5 +7,9 @@
 				"mhutchie.git-graph"
 			]
 		}
+	},
+	"features": {
+		"ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {},
+		"ghcr.io/guiyomh/features/vim:0": {}
 	}
 }

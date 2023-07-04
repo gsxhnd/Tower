@@ -20,7 +20,7 @@ func (r *Routes) Init() {
 	rootRoutes := r.Engine.Group("/")
 	rootRoutes.GET("", r.RootHandle.Ping)
 
-	r.NewDemoRoute()
+	r.newDemoRoute()
 }
 
 var RouteSet = wire.NewSet(
