@@ -12,7 +12,7 @@ import (
 	"github.com/gsxhnd/go-api-template/src/utils"
 )
 
-func InitApp(filePath *string) (*Application, error) {
+func InitApp() (*Application, error) {
 	wire.Build(
 		NewApplication,
 		routes.RouteSet,

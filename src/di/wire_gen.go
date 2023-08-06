@@ -18,9 +18,9 @@ import (
 
 // Injectors from wire.go:
 
-func InitApp(filePath *string) (*Application, error) {
+func InitApp() (*Application, error) {
 	engine := gin.New()
-	config, err := utils.NewConfig(filePath)
+	config, err := utils.NewConfig()
 	if err != nil {
 		return nil, err
 	}

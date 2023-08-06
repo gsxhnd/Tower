@@ -14,7 +14,7 @@ type Config struct {
 
 // type EnvConfig struct{}
 
-func NewConfig(filePath *string) (*Config, error) {
+func NewConfig() (*Config, error) {
 	cfg := Config{}
 	if err := env.Parse(&cfg); err != nil {
 		return nil, err

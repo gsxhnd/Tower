@@ -1,16 +1,11 @@
 package main
 
 import (
-	"flag"
-
 	"github.com/gsxhnd/go-api-template/src/di"
 )
 
 func main() {
-	filePath := flag.String("config", "config.yaml", "config file path")
-	flag.Parse()
-
-	app, err := di.InitApp(filePath)
+	app, err := di.InitApp()
 	if err != nil {
 		panic(err)
 	}

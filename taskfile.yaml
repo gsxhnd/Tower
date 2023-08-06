@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: '3'
+
+tasks:
+  di:
+    cmds:
+      - wire ./src/di
+  clean:
+    cmds:
+      - go clean --cache
+      - rm -rvf build
+      - rm -rvf dist
