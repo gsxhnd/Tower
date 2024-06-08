@@ -13,8 +13,6 @@ type Config struct {
 	TraceUrl    string `env:"TRACE_URL"`
 }
 
-// type EnvConfig struct{}
-
 func NewConfig() (*Config, error) {
 	cfg := Config{}
 	if err := env.Parse(&cfg); err != nil {
