@@ -1,7 +1,6 @@
 package di
 
 type Task struct {
-	// engine *gin.Engine
 }
 
 func NewTask() *Task {

@@ -5,8 +5,9 @@ import (
 )
 
 type Config struct {
-	Dev         bool   `env:"DEV" envDefault:"true"`
-	Debug       bool   `env:"DEBUG" envDefault:"true"`
+	Dev         bool `env:"DEV" envDefault:"true"`
+	Debug       bool `env:"DEBUG" envDefault:"true"`
+	Port        string
 	LogLevel    string `env:"LOG_LEVEL" envDefault:"info"`
 	TraceEnable bool   `env:"TRACE_ENABLE" envDefault:"false"`
 	TraceUrl    string `env:"TRACE_URL"`

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/gsxhnd/go-api-template/src/di"
+	"github.com/gsxhnd/go-api-template/di"
 )
 
 func main() {

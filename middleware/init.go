@@ -1,12 +1,13 @@
 package middleware
 
 import (
-	"github.com/gin-gonic/gin"
-	"github.com/gsxhnd/go-api-template/src/utils"
+	"github.com/gofiber/fiber/v2"
+	"github.com/gsxhnd/go-api-template/utils"
 )
 
 type Middlewarer interface {
-	RequestLog() gin.HandlerFunc
+	RequestLog(ctxc *fiber.Ctx) error
+	// Websocket(ctxc *fiber.Ctx) error
 }
 type middleware struct {
 	logger utils.Logger
