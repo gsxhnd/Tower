@@ -4,7 +4,7 @@ version: '3'
 tasks:
   di:
     cmds:
-      - wire ./src/di
+      - wire ./di
   clean:
     cmds:
       - go clean --cache
